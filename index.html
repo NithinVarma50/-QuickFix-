@@ -480,41 +480,6 @@
    <p class="text-center text-sm mt-6 select-none">© 2025 QuickFix. Made with 🔧 in Hyderabad.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script>
-    // Initialize Supabase
-    const supabase = supabase.createClient(
-      'https://bxtitimlbtdwospiwtjp.supabase.co', // Your Supabase URL
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4dGl0aW1sYnRkd29zcGl3dGpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcwMjY4MTYsImV4cCI6MjA2MjYwMjgxNn0.sAoHIR4lyQTCwlZGqdFo_7YKShYo3wD2KkLhwi_mcAk' // Your Supabase public key
-    );
-
-    // Handle form submission
-    document.getElementById('bookingForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Collect form data
-      const formData = {
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
-        address: document.getElementById('address').value,
-        email: document.getElementById('email').value || null,
-        problem: document.getElementById('problem').value,
-      };
-
-      // Insert data into Supabase
-      const { data, error } = await supabase
-        .from('bookings') // Replace 'bookings' with your actual table name in Supabase
-        .insert([formData]);
-
-      if (error) {
-        alert('Error: ' + error.message);
-      } else {
-        alert('Booking successful!');
-        // Optionally reset the form
-        document.getElementById('bookingForm').reset();
-      }
-    });
-  </script>
   <script>
    // Modal open/close
    document.addEventListener("DOMContentLoaded", function () {
@@ -541,6 +506,24 @@
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
      }
+    });
+
+    // WhatsApp integration for booking form
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const email = document.getElementById('email').value;
+      const problem = document.getElementById('problem').value;
+      let message = `*QuickFix Booking Request*%0A`;
+      message += `*Name:* ${name}%0A`;
+      message += `*Phone:* ${phone}%0A`;
+      message += `*Address:* ${address}%0A`;
+      if(email) message += `*Email:* ${email}%0A`;
+      message += `*Problem:* ${problem}`;
+      const whatsappUrl = `https://wa.me/917337243180?text=${encodeURI(message)}`;
+      window.open(whatsappUrl, '_blank');
     });
    });
   </script>
