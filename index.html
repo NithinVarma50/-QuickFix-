@@ -1,0 +1,541 @@
+<html class="scroll-smooth" lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>QuickFix - Vehicle Repairs at Your Doorstep</title>
+  <meta
+   content="QuickFix offers fast, reliable vehicle repairs with pick-up &amp; drop services in Hyderabad. Book now for same-day repairs by certified mechanics."
+   name="description"
+  />
+  <meta
+   content="Vehicle repair Hyderabad, bike repair Hyderabad, car repair Hyderabad, roadside assistance Hyderabad, pick-up and drop vehicle repair"
+   name="keywords"
+  />
+  <meta content="QuickFix" name="author" />
+  <link
+   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap"
+   rel="stylesheet"
+  />
+  <link
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+   rel="stylesheet"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+   body {
+    font-family: "Inter", sans-serif;
+   }
+  </style>
+ </head>
+ <body class="bg-white text-gray-900 flex flex-col min-h-screen">
+  <!-- Hero Section -->
+  <header class="relative bg-gray-50">
+   <img
+    alt="A friendly bike repair technician working outside a modern Hyderabad apartment complex with greenery and tech park buildings in the background"
+    class="w-full h-64 sm:h-96 object-cover brightness-90"
+    height="1080"
+    src="https://storage.googleapis.com/a1aa/image/870a9005-f588-4c38-c730-d1d50b3d8beb.jpg"
+    width="1920"
+   />
+   <div
+    class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/40 flex flex-col justify-center items-center px-6 text-center"
+   >
+    <h1
+     class="text-yellow-400 text-4xl sm:text-6xl font-extrabold mb-4 tracking-wide drop-shadow-lg"
+    >
+     QuickFix
+    </h1>
+    <h2 class="text-white text-3xl sm:text-5xl font-extrabold leading-tight max-w-4xl">
+     Vehicle Repairs at Your Doorstep
+    </h2>
+    <p class="mt-4 text-lg sm:text-xl text-gray-200 max-w-2xl">
+     Pick-up &amp; Drop Available. No waiting. No stress.
+    </p>
+    <div
+     class="mt-6 flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md w-full"
+    >
+     <select
+      aria-label="Select city"
+      class="cursor-not-allowed bg-white/90 text-gray-700 rounded-md px-4 py-2 w-full sm:w-auto"
+      disabled=""
+     >
+      <option>Hyderabad</option>
+      <option>Coming Soon: Other Cities</option>
+     </select>
+     <!-- Book Now triggers modal -->
+     <button
+      id="openBookingForm"
+      class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-md px-6 py-3 shadow-md transition"
+      type="button"
+     >
+      Book Now
+     </button>
+     <a
+      class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-md px-6 py-3 shadow-md transition"
+      href="tel:+917337243180"
+     >
+      <i class="fas fa-phone-alt"></i> Call Us
+     </a>
+    </div>
+   </div>
+  </header>
+
+  <!-- Booking Form Modal -->
+  <div
+   id="bookingModal"
+   class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50"
+   aria-hidden="true"
+  >
+   <div
+    class="bg-white rounded-lg max-w-lg w-full p-6 relative shadow-lg overflow-y-auto max-h-[90vh]"
+   >
+    <button
+     id="closeBookingForm"
+     aria-label="Close booking form"
+     class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl font-bold"
+     type="button"
+    >
+     &times;
+    </button>
+    <h3 class="text-2xl font-extrabold mb-6 text-center text-gray-900">
+     Book Your Vehicle Repair
+    </h3>
+    <form
+     id="bookingForm"
+     action="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMYFORMID/formResponse"
+     method="POST"
+     class="space-y-5"
+     novalidate
+    >
+     <div>
+      <label
+       for="name"
+       class="block text-gray-700 font-semibold mb-1"
+       >Name <span class="text-red-600">*</span></label
+      >
+      <input
+       type="text"
+       id="name"
+       name="entry.1234567890"
+       required
+       class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+       placeholder="Your full name"
+      />
+     </div>
+     <div>
+      <label
+       for="phone"
+       class="block text-gray-700 font-semibold mb-1"
+       >Phone Number <span class="text-red-600">*</span></label
+      >
+      <input
+       type="tel"
+       id="phone"
+       name="entry.2345678901"
+       pattern="^\+?\d{7,15}$"
+       required
+       class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+       placeholder="Enter your phone number"
+      />
+     </div>
+     <div>
+      <label for="address" class="block text-gray-700 font-semibold mb-1"
+       >Address <span class="text-red-600">*</span></label
+      >
+      <textarea
+       id="address"
+       name="entry.3456789012"
+       rows="2"
+       required
+       class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
+       placeholder="Your address for onsite service"
+      ></textarea>
+     </div>
+     <div>
+      <label for="email" class="block text-gray-700 font-semibold mb-1"
+       >Email (Optional)</label
+      >
+      <input
+       type="email"
+       id="email"
+       name="entry.4567890123"
+       class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+       placeholder="you@example.com"
+      />
+     </div>
+     <div>
+      <label
+       for="problem"
+       class="block text-gray-700 font-semibold mb-1"
+       >Problem Description <span class="text-red-600">*</span></label
+      >
+      <textarea
+       id="problem"
+       name="entry.5678901234"
+       rows="3"
+       required
+       class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
+       placeholder="Describe the issue with your vehicle"
+      ></textarea>
+     </div>
+     <div class="flex justify-center">
+      <button
+       type="submit"
+       class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-md px-8 py-3 shadow-md transition w-full sm:w-auto"
+      >
+       Submit Booking
+      </button>
+     </div>
+    </form>
+   </div>
+  </div>
+
+  <!-- Services Section -->
+  <section class="py-16 px-6 sm:px-12 max-w-7xl mx-auto" id="services">
+   <h2 class="text-3xl font-extrabold text-center mb-12">What We Fix</h2>
+   <div
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 max-w-5xl mx-auto text-center"
+   >
+    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
+     <i class="fas fa-tools text-yellow-500 text-4xl mb-2"></i>
+     <h3 class="font-semibold text-lg">General Repairs</h3>
+    </div>
+    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
+     <i class="fas fa-battery-full text-yellow-500 text-4xl mb-2"></i>
+     <h3 class="font-semibold text-lg">Battery Jumpstart</h3>
+    </div>
+    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
+     <i class="fas fa-car-crash text-yellow-500 text-4xl mb-2"></i>
+     <h3 class="font-semibold text-lg">Flat Tyre Fix</h3>
+    </div>
+    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
+     <i class="fas fa-oil-can text-yellow-500 text-4xl mb-2"></i>
+     <h3 class="font-semibold text-lg">Oil Change</h3>
+    </div>
+    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
+     <i class="fas fa-ambulance text-yellow-500 text-4xl mb-2"></i>
+     <h3 class="font-semibold text-lg">Emergency Roadside Help</h3>
+    </div>
+    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
+     <i class="fas fa-truck-pickup text-yellow-500 text-4xl mb-2"></i>
+     <h3 class="font-semibold text-lg">Pick-Up &amp; Drop (Full Repairs)</h3>
+    </div>
+   </div>
+   <p class="mt-8 text-center text-gray-600 max-w-xl mx-auto italic">
+    More services coming soon. Book anything, we've got it.
+   </p>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="bg-gray-50 py-16 px-6 sm:px-12" id="how-it-works">
+   <h2 class="text-3xl font-extrabold text-center mb-12">How It Works</h2>
+   <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-10 text-center">
+    <div class="flex flex-col items-center space-y-4 px-4">
+     <div class="bg-yellow-500 text-white rounded-full p-5 text-3xl shadow-md">
+      <i class="fas fa-laptop-phone"></i>
+     </div>
+     <h3 class="font-semibold text-lg">Book Online or Call</h3>
+     <p class="text-gray-600 text-sm">Choose your preferred booking method easily.</p>
+    </div>
+    <div class="flex flex-col items-center space-y-4 px-4">
+     <div class="bg-yellow-500 text-white rounded-full p-5 text-3xl shadow-md">
+      <i class="fas fa-truck"></i>
+     </div>
+     <h3 class="font-semibold text-lg">Choose Onsite or Pick-Up</h3>
+     <p class="text-gray-600 text-sm">We come to you or pick up your vehicle.</p>
+    </div>
+    <div class="flex flex-col items-center space-y-4 px-4">
+     <div class="bg-yellow-500 text-white rounded-full p-5 text-3xl shadow-md">
+      <i class="fas fa-wrench"></i>
+     </div>
+     <h3 class="font-semibold text-lg">We Repair (Same Day)</h3>
+     <p class="text-gray-600 text-sm">Certified mechanics fix your vehicle quickly.</p>
+    </div>
+    <div class="flex flex-col items-center space-y-4 px-4">
+     <div class="bg-yellow-500 text-white rounded-full p-5 text-3xl shadow-md">
+      <i class="fas fa-car"></i>
+     </div>
+     <h3 class="font-semibold text-lg">You're Back on the Road 🚗</h3>
+     <p class="text-gray-600 text-sm">Get back to your day without hassle.</p>
+    </div>
+   </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="py-16 px-6 sm:px-12 max-w-7xl mx-auto" id="pricing">
+    <h2 class="text-3xl font-extrabold text-center mb-12">
+      Convenience (Pickup/Delivery) Fees in Hyderabad
+    </h2>
+    <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+      <table class="w-full text-left">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-6 py-3 text-gray-600 font-semibold uppercase text-sm">
+              Distance Band
+            </th>
+            <th class="px-6 py-3 text-gray-600 font-semibold uppercase text-sm text-right">
+              Convenience Fee (INR)
+            </th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700">
+          <tr>
+            <td class="px-6 py-4 border-t border-gray-200">Up to 5 km</td>
+            <td class="px-6 py-4 border-t border-gray-200 text-right">₹ 60</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 border-t border-gray-200">5 - 10 km</td>
+            <td class="px-6 py-4 border-t border-gray-200 text-right">₹ 100</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 border-t border-gray-200">Over 10 km</td>
+            <td class="px-6 py-4 border-t border-gray-200 text-right">₹ 150</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="px-6 py-4 bg-gray-50">
+        <p class="text-sm text-gray-600 italic">
+          Label as "Convenience Charge" on your invoice – it's transparent and
+          customers get why it's there.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose QuickFix Section -->
+  <section class="py-16 px-6 sm:px-12 max-w-7xl mx-auto" id="why-choose">
+   <h2 class="text-3xl font-extrabold text-center mb-12">Why Choose QuickFix?</h2>
+   <div
+    class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-8 max-w-6xl mx-auto text-center"
+   >
+    <div
+     class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition"
+    >
+     <div class="text-yellow-500 text-5xl">🔧</div>
+     <h3 class="font-semibold text-lg">Certified Mechanics</h3>
+    </div>
+    <div
+     class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition"
+    >
+     <div class="text-yellow-500 text-5xl">⚡</div>
+     <h3 class="font-semibold text-lg">Same-Day Repairs</h3>
+    </div>
+    <div
+     class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition"
+    >
+     <div class="text-yellow-500 text-5xl">📍</div>
+     <h3 class="font-semibold text-lg">Hyderabad-Wide Coverage</h3>
+    </div>
+    <div
+     class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition"
+    >
+     <div class="text-yellow-500 text-5xl">📱</div>
+     <h3 class="font-semibold text-lg">Easy Booking via App or Call</h3>
+    </div>
+    <div
+     class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition"
+    >
+     <div class="text-yellow-500 text-5xl">💸</div>
+     <h3 class="font-semibold text-lg">Transparent Pricing</h3>
+    </div>
+    <div
+     class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition"
+    >
+     <div class="text-yellow-500 text-5xl">🧰</div>
+     <h3 class="font-semibold text-lg">All Repairs, Big or Small</h3>
+    </div>
+   </div>
+  </section>
+
+  <!-- Service Zones Section -->
+  <section class="bg-gray-50 py-16 px-6 sm:px-12 max-w-7xl mx-auto" id="service-zones">
+   <h2 class="text-3xl font-extrabold text-center mb-12">We Serve All Over Hyderabad</h2>
+   <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-10">
+    <div class="md:w-1/2 rounded-lg overflow-hidden shadow-lg">
+     <img
+      alt="Map of Hyderabad city highlighting service zones including Hitech City, Kukatpally, Gachibowli, Jubilee Hills, Uppal, LB Nagar"
+      class="w-full h-auto object-cover"
+      height="400"
+      src="https://storage.googleapis.com/a1aa/image/01fd53b1-933b-4409-c41f-b217cc01f9a9.jpg"
+      width="600"
+     />
+    </div>
+    <div class="md:w-1/2 flex flex-col justify-center">
+     <ul class="list-disc list-inside text-lg space-y-2 text-gray-700 font-medium">
+      <li>Hitech City</li>
+      <li>Kukatpally</li>
+      <li>Gachibowli</li>
+      <li>Jubilee Hills</li>
+      <li>Uppal</li>
+      <li>LB Nagar</li>
+     </ul>
+     <a
+      class="mt-8 inline-flex items-center justify-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-md px-6 py-3 shadow-md transition w-max"
+      href="#request-service"
+     >
+      <i class="fas fa-map-marker-alt"></i> Request Service Here
+     </a>
+    </div>
+   </div>
+  </section>
+
+  <!-- Coming Soon / Our Vision Section -->
+  <section class="py-16 px-6 sm:px-12 max-w-4xl mx-auto text-center" id="vision">
+   <h2 class="text-3xl font-extrabold mb-6">Our Vision</h2>
+   <p class="text-gray-700 text-lg max-w-xl mx-auto leading-relaxed">
+    QuickFix is starting in Hyderabad.
+    <br />
+    But we're just getting warmed up.
+    <br />
+    More cities, more tech, more speed. Stay tuned.
+   </p>
+  </section>
+
+  <!-- Founding Team Section -->
+  <section class="py-16 px-6 sm:px-12 max-w-7xl mx-auto" id="team">
+   <h2 class="text-3xl font-extrabold text-center mb-12">
+    QuickFix Founding Team
+   </h2>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+    <!-- Saiteja -->
+    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+     <h3 class="text-2xl font-bold text-yellow-500 mb-3">Saiteja</h3>
+     <p class="text-gray-700 font-semibold mb-2">Founder & CEO</p>
+     <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+      <li>The mind behind the mission — leads vision, service innovation, and business development</li>
+      <li>Drives daily operations, partnerships, pricing models, and future expansion (mobile van services incoming!)</li>
+      <li>Focused on building a trusted, scalable brand for doorstep vehicle repair</li>
+     </ul>
+    </div>
+
+    <!-- Karthik -->
+    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+     <h3 class="text-2xl font-bold text-yellow-500 mb-3">Karthik</h3>
+     <p class="text-gray-700 font-semibold mb-2">Co-Founder & Operations Lead</p>
+     <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+      <li>Handles all things on-ground — vehicle pickup/drop logistics, customer coordination, and mechanic relations</li>
+      <li>Ensures smooth service flow and customer satisfaction at every touchpoint</li>
+      <li>The backbone of execution and day-to-day hustle</li>
+     </ul>
+    </div>
+
+    <!-- Nithin Varma -->
+    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+     <h3 class="text-2xl font-bold text-yellow-500 mb-3">Nithin Varma</h3>
+     <p class="text-gray-700 font-semibold mb-2">Chief Operating Officer (COO), Tech Lead & Strategy Builder</p>
+     <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+      <li>Architect of the QuickFix website and backend systems</li>
+      <li>Drives internal team structure, process automation, and performance tracking</li>
+      <li>Strategic thinker — shaping the company's roadmap, digital tools, and long-term business moves</li>
+     </ul>
+    </div>
+   </div>
+  </section>
+
+  <!-- Hyderabad Location Highlight at End -->
+  <section
+   class="bg-yellow-500 text-black py-8 px-6 sm:px-12 text-center max-w-4xl mx-auto rounded-lg mb-12"
+  >
+   <p class="text-xl font-semibold">Now in Hyderabad</p>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section
+   class="sticky bottom-0 bg-yellow-500 text-black py-5 px-6 sm:px-12 flex flex-col sm:flex-row justify-between items-center shadow-lg z-50"
+   id="booking"
+  >
+   <p class="font-semibold text-lg mb-3 sm:mb-0">Need a quick fix? Book a service now.</p>
+   <a
+    class="inline-flex items-center gap-2 bg-black text-yellow-500 font-bold rounded-md px-6 py-3 hover:bg-gray-900 transition w-full sm:w-auto justify-center"
+    href="https://wa.me/917337243180?text=Hi%20QuickFix,%20I%20want%20to%20book%20a%20vehicle%20repair%20service."
+    rel="noopener"
+    target="_blank"
+   >
+    <i class="fab fa-whatsapp text-2xl"></i> Book Now
+   </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-8 px-6 sm:px-12 mt-auto">
+   <div
+    class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6"
+   >
+    <nav class="flex flex-wrap gap-6 text-sm font-medium">
+     <a class="hover:text-yellow-500 transition" href="#hero">Home</a>
+     <a class="hover:text-yellow-500 transition" href="#services">Services</a>
+     <a class="hover:text-yellow-500 transition" href="#booking">Contact</a>
+     <a class="hover:text-yellow-500 transition" href="#terms">Terms</a>
+    </nav>
+    <div class="flex space-x-6 text-xl">
+     <a
+      aria-label="Facebook"
+      class="hover:text-yellow-500 transition"
+      href="https://facebook.com/quickfix"
+      rel="noopener"
+      target="_blank"
+     >
+      <i class="fab fa-facebook-f"></i>
+     </a>
+     <a
+      aria-label="Instagram"
+      class="hover:text-yellow-500 transition"
+      href="https://instagram.com/quickfix"
+      rel="noopener"
+      target="_blank"
+     >
+      <i class="fab fa-instagram"></i>
+     </a>
+     <a
+      aria-label="Twitter"
+      class="hover:text-yellow-500 transition"
+      href="https://twitter.com/quickfix"
+      rel="noopener"
+      target="_blank"
+     >
+      <i class="fab fa-twitter"></i>
+     </a>
+     <a
+      aria-label="WhatsApp"
+      class="hover:text-yellow-500 transition"
+      href="https://wa.me/917337243180"
+      rel="noopener"
+      target="_blank"
+     >
+      <i class="fab fa-whatsapp"></i>
+     </a>
+    </div>
+   </div>
+   <p class="text-center text-sm mt-6 select-none">© 2025 QuickFix. Made with 🔧 in Hyderabad.</p>
+  </footer>
+
+  <script>
+   // Modal open/close
+   document.addEventListener("DOMContentLoaded", function () {
+    const openBtn = document.getElementById("openBookingForm");
+    const closeBtn = document.getElementById("closeBookingForm");
+    const modal = document.getElementById("bookingModal");
+
+    openBtn.addEventListener("click", () => {
+     modal.classList.remove("hidden");
+     modal.setAttribute("aria-hidden", "false");
+     document.body.style.overflow = "hidden";
+    });
+
+    closeBtn.addEventListener("click", () => {
+     modal.classList.add("hidden");
+     modal.setAttribute("aria-hidden", "true");
+     document.body.style.overflow = "";
+    });
+
+    // Close modal on outside click
+    modal.addEventListener("click", (e) => {
+     if (e.target === modal) {
+      modal.classList.add("hidden");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+     }
+    });
+   });
+  </script>
+ </body>
+</html>
