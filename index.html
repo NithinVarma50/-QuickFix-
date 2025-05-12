@@ -511,18 +511,19 @@
     // WhatsApp integration for booking form
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const address = document.getElementById('address').value;
-      const email = document.getElementById('email').value;
-      const problem = document.getElementById('problem').value;
-      let message = `*QuickFix Booking Request*%0A`;
-      message += `*Name:* ${name}%0A`;
-      message += `*Phone:* ${phone}%0A`;
-      message += `*Address:* ${address}%0A`;
-      if(email) message += `*Email:* ${email}%0A`;
-      message += `*Problem:* ${problem}`;
-      const whatsappUrl = `https://wa.me/917337243180?text=${encodeURI(message)}`;
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const problem = document.getElementById('problem').value.trim();
+      let message = '*QuickFix Booking Request*%0A%0A';
+      message += '*Name:* ' + name + '%0A';
+      message += '*Phone:* ' + phone + '%0A';
+      message += '*Address:* ' + address + '%0A';
+      if(email) message += '*Email:* ' + email + '%0A';
+      message += '*Problem Description:* ' + problem + '%0A';
+      message += '%0A---%0AQuickFix Hyderabad';
+      const whatsappUrl = `https://wa.me/917337243180?text=${message}`;
       window.open(whatsappUrl, '_blank');
     });
    });
