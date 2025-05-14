@@ -22,62 +22,113 @@
   />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+   /* Updated Color Palette */
+   :root {
+    --primary-color: #4CAF50; /* Premium green */
+    --secondary-color: #FFC107; /* Accent yellow */
+    --background-color: #F9FAFB; /* Light background */
+    --text-color: #333333; /* Dark text */
+    --muted-text-color: #6B7280; /* Muted text */
+    --card-bg: #FFFFFF; /* Card background */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Subtle shadow */
+   }
+
    body {
     font-family: "Inter", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+   }
+
+   header {
+    position: relative;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+   }
+
+   header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    animation: fadeInDown 1s ease-in-out;
+   }
+
+   header h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    animation: fadeInUp 1s ease-in-out;
+   }
+
+   button,
+   a {
+    transition: all 0.3s ease;
+   }
+
+   button:hover,
+   a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px var(--shadow-color);
+   }
+
+   section {
+    padding: 4rem 1rem;
+    text-align: center;
+   }
+
+   section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+   }
+
+   .card {
+    background: var(--card-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+
+   .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px var(--shadow-color);
+   }
+
+   @keyframes fadeInDown {
+    from {
+     opacity: 0;
+     transform: translateY(-20px);
+    }
+    to {
+     opacity: 1;
+     transform: translateY(0);
+    }
+   }
+
+   @keyframes fadeInUp {
+    from {
+     opacity: 0;
+     transform: translateY(20px);
+    }
+    to {
+     opacity: 1;
+     transform: translateY(0);
+    }
    }
   </style>
  </head>
  <body class="bg-white text-gray-900 flex flex-col min-h-screen">
   <!-- Hero Section -->
-  <header class="relative bg-gray-50">
-   <img
-    alt="A friendly bike repair technician working outside a modern Hyderabad apartment complex with greenery and tech park buildings in the background"
-    class="w-full h-64 sm:h-96 object-cover brightness-90"
-    height="1080"
-    src="https://storage.googleapis.com/a1aa/image/870a9005-f588-4c38-c730-d1d50b3d8beb.jpg"
-    width="1920"
-   />
-   <div
-    class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/40 flex flex-col justify-center items-center px-6 text-center"
-   >
-    <h1
-     class="text-yellow-400 text-4xl sm:text-6xl font-extrabold mb-4 tracking-wide drop-shadow-lg"
-    >
-     QuickFix
-    </h1>
-    <h2 class="text-white text-3xl sm:text-5xl font-extrabold leading-tight max-w-4xl">
-     Vehicle Repairs at Your Doorstep
-    </h2>
-    <p class="mt-4 text-lg sm:text-xl text-gray-200 max-w-2xl">
-     Pick-up &amp; Drop Available. No waiting. No stress.
-    </p>
-    <div
-     class="mt-6 flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md w-full"
-    >
-     <select
-      aria-label="Select city"
-      class="cursor-not-allowed bg-white/90 text-gray-700 rounded-md px-4 py-2 w-full sm:w-auto"
-      disabled=""
-     >
-      <option>Hyderabad</option>
-      <option>Coming Soon: Other Cities</option>
-     </select>
-     <!-- Book Now triggers modal -->
-     <button
-      id="openBookingForm"
-      class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-md px-6 py-3 shadow-md transition"
-      type="button"
-     >
-      Book Now
-     </button>
-     <a
-      class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-md px-6 py-3 shadow-md transition"
-      href="tel:+917337243180"
-     >
-      <i class="fas fa-phone-alt"></i> Call Us
-     </a>
-    </div>
-   </div>
+  <header class="relative bg-gradient-to-b from-primary-color to-secondary-color">
+   <h1 class="text-white text-4xl sm:text-6xl font-extrabold mb-4 tracking-wide drop-shadow-lg">
+    QuickFix
+   </h1>
+   <h2 class="text-white text-3xl sm:text-5xl font-extrabold leading-tight max-w-4xl">
+    Vehicle Repairs at Your Doorstep
+   </h2>
   </header>
 
   <!-- Booking Form Modal -->
@@ -190,39 +241,34 @@
   </div>
 
   <!-- Services Section -->
-  <section class="py-16 px-6 sm:px-12 max-w-7xl mx-auto" id="services">
+  <section id="services" class="py-16 px-6 sm:px-12 max-w-7xl mx-auto">
    <h2 class="text-3xl font-extrabold text-center mb-12">What We Fix</h2>
-   <div
-    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 max-w-5xl mx-auto text-center"
-   >
-    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
-     <i class="fas fa-tools text-yellow-500 text-4xl mb-2"></i>
+   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 max-w-5xl mx-auto text-center">
+    <div class="card">
+     <i class="fas fa-tools text-primary-color text-4xl mb-2"></i>
      <h3 class="font-semibold text-lg">General Repairs</h3>
     </div>
-    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
-     <i class="fas fa-battery-full text-yellow-500 text-4xl mb-2"></i>
+    <div class="card">
+     <i class="fas fa-battery-full text-primary-color text-4xl mb-2"></i>
      <h3 class="font-semibold text-lg">Battery Jumpstart</h3>
     </div>
-    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
-     <i class="fas fa-car-crash text-yellow-500 text-4xl mb-2"></i>
+    <div class="card">
+     <i class="fas fa-car-crash text-primary-color text-4xl mb-2"></i>
      <h3 class="font-semibold text-lg">Flat Tyre Fix</h3>
     </div>
-    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
-     <i class="fas fa-oil-can text-yellow-500 text-4xl mb-2"></i>
+    <div class="card">
+     <i class="fas fa-oil-can text-primary-color text-4xl mb-2"></i>
      <h3 class="font-semibold text-lg">Oil Change</h3>
     </div>
-    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
-     <i class="fas fa-ambulance text-yellow-500 text-4xl mb-2"></i>
+    <div class="card">
+     <i class="fas fa-ambulance text-primary-color text-4xl mb-2"></i>
      <h3 class="font-semibold text-lg">Emergency Roadside Help</h3>
     </div>
-    <div class="flex flex-col items-center space-y-3 p-4 border rounded-lg shadow-sm hover:shadow-lg transition">
-     <i class="fas fa-truck-pickup text-yellow-500 text-4xl mb-2"></i>
-     <h3 class="font-semibold text-lg">Pick-Up &amp; Drop (Full Repairs)</h3>
+    <div class="card">
+     <i class="fas fa-truck-pickup text-primary-color text-4xl mb-2"></i>
+     <h3 class="font-semibold text-lg">Pick-Up & Drop</h3>
     </div>
    </div>
-   <p class="mt-8 text-center text-gray-600 max-w-xl mx-auto italic">
-    More services coming soon. Book anything, we've got it.
-   </p>
   </section>
 
   <!-- How It Works Section -->
